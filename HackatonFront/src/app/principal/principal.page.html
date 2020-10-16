@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>Principal</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,29 +7,52 @@
 <ion-content>
 
 <div cdkDropListGroup>
-  <div class="example-container">
-    <h2>To do</h2>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="todo"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+    <ion-grid>
+      <ion-row>
 
-  <div class="example-container">
-    <h2>Done</h2>
+        <ion-col>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="done"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-    </div>
-  </div>
+          <h2>Agregar un servicio</h2>
+            <div class="example-container vertical-scroll-contenedor">
+              
+              <div
+                cdkDropList
+                [cdkDropListData]="tipo1"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of tipo1" cdkDrag>
+                    {{item.tipo}}
+                </div>
+              </div>
+            </div>
+
+        </ion-col>
+
+
+        <ion-col>
+
+             <h2>Servicios Actuales</h2>
+            <div class="example-container vertical-scroll-contenedor">
+              <div
+                cdkDropList
+                [cdkDropListData]="myPyme.servicios"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of myPyme.servicios" cdkDrag (dblclick)="llena()">
+                    {{item.tipo}}
+                </div>
+              </div>
+            </div>
+
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
 </div>
 
 </ion-content>
+
+
