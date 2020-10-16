@@ -62,4 +62,8 @@ export class PrincipalPage implements OnInit {
     alert("presionaste");
   }
 
+  siguiente(){
+    //redireccionar
+  }
+
 }

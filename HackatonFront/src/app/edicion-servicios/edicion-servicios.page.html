@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>EdicionServicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div cdkDropListGroup>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+             <h2>Vamos a editar estos servicios</h2>
+            <div class="example-container vertical-scroll-contenedor">
+              <div
+                [cdkDropListData]="myPyme.servicios"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of myPyme.servicios" (dblclick)="llena()">
+                    <img src="assets/Imagenes/{{item.NombreIma}}" class="rounded float-left">
+                    <h5>{{item.tipo}}</h5>
+                </div>
+              </div>
+            </div>
+
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+</div>
+
+</ion-content>
