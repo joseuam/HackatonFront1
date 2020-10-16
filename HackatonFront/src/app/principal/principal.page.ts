@@ -18,26 +18,24 @@ export class PrincipalPage implements OnInit {
   constructor() { 
     //ya establecidos
     this.myPyme=new Pyme(null,"primero",[]);
-    var consumoAgua=new Servicio(null,"consumo de agua",0,0);
-    var consumoLuz=new Servicio(null,"consumo de luz",0,0);
-    var consumoGas=new Servicio(null,"consumo de gas",0,0);
+    var consumoAgua=new Servicio(null,"consumo de agua",0,0,"Agua.png");
+    var consumoLuz=new Servicio(null,"consumo de luz",0,0,"CLuz.jpg");
+    var consumoGas=new Servicio(null,"consumo de gas",0,0,"Cgas.jpg");
     this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoLuz);
     this.myPyme.servicios.push(consumoGas);
 
 
     //Pueden o no ser agregados
-    var consumoRefrig=new Servicio(null,"consumo de refrigeracion",0,0);
-    var consumoEnfriamiento=new Servicio(null,"consumo de enfiamiento",0,0);
-    var consumoAireAcon=new Servicio(null,"consumo de Aire Acondicionado",0,0);
-    var consumoCalefa=new Servicio(null,"consumo Calefaccion",0,0);
-    var consumoAuto=new Servicio(null,"consumo transporte",0,0);
+    var consumoRefrig=new Servicio(null,"consumo de refrigeracion",0,0,"Electrodo.jpg");
+    var consumoEnfriamiento=new Servicio(null,"consumo de enfiamiento",0,0,"Electrodo.jpg");
+    var consumoAireAcon=new Servicio(null,"consumo de Aire Acondicionado",0,0,"Electrodo.jpg");
+    var consumoCalefa=new Servicio(null,"consumo Calefaccion",0,0,"Electrodo.jpg");
+    var consumoAuto=new Servicio(null,"consumo transporte",0,0,"CAuto.png");
     this.tipo1.push(consumoRefrig);
     this.tipo1.push(consumoEnfriamiento);
     this.tipo1.push(consumoAireAcon);
     this.tipo1.push(consumoCalefa);
-
-    var consumo=new Servicio(null,"consumo de refrigeracion",0,0);
 
 
   }

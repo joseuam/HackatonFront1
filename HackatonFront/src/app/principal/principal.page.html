@@ -30,6 +30,7 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of tipo1" cdkDrag>
+                  <img src="assets/Imagenes/{{item.NombreIma}}" class="rounded float-left">
                     {{item.tipo}}
                 </div>
               </div>
@@ -48,6 +49,7 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of myPyme.servicios" cdkDrag (dblclick)="llena()">
+                    <img src="assets/Imagenes/{{item.NombreIma}}" class="rounded float-left">
                     {{item.tipo}}
                 </div>
               </div>

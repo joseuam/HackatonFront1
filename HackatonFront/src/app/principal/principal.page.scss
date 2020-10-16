@@ -1,3 +1,7 @@
+img{
+  width: 50px;
+}
+
 .vertical-scroll-contenedor{
       overflow-y: auto; 
       overflow-x: hidden;
@@ -6,7 +10,7 @@
       white-space: nowrap;
 }
 .example-container {
-  width: 200px;
+  width: 250px;
   max-width: 100%;
   margin: 0 25px 25px 0;
   display: inline-block;
