@@ -31,7 +31,7 @@
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of tipo1" cdkDrag>
                   
-                  <img src="assets/Imagenes/{{item.NombreImagen}}">
+                  <img src="assets/Imagenes/Servicios/{{item.NombreImagen}}">
                     
 
                 </div>
@@ -47,12 +47,12 @@
             <div class="example-container vertical-scroll-contenedor">
               <div
                 cdkDropList
-                [cdkDropListData]="serviciosNuevos"
+                [cdkDropListData]="this.myPyme.servicios"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
 
-                <div class="example-box" *ngFor="let item of serviciosNuevos" cdkDrag>
-                    <img src="assets/Imagenes/{{item.NombreImagen}}" class="rounded float-left">
+                <div class="example-box" *ngFor="let item of this.myPyme.servicios" cdkDrag>
+                    <img src="assets/Imagenes/Servicios/{{item.NombreImagen}}" class="rounded float-left">
 
 
                 </div>

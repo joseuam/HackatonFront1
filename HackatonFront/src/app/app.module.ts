@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 	  IonicModule.forRoot(), 
 	  AppRoutingModule, 
 	  BrowserAnimationsModule,
-	  DragDropModule
+	  DragDropModule,
+    HttpClientModule
   ],
 
   providers: [

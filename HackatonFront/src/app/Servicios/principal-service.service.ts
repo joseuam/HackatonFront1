@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import{Pyme} from '../Entidades/Pyme';
+import{Servicio} from '../Entidades/Servicio';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrincipalServiceService {
 
-	Url='v1/pymes';
 
+	
   	constructor(private http: HttpClient) {}
 
-  	create(pyme:Pyme ){
-  		return this.http.post<Pyme>(this.Url,pyme);
+  	createPyme(pyme:Pyme ){
+      
+  		return this.http.post<Pyme>('http://localhost:8080/v1/pymes',pyme);
+
+  	}
+
+  	createServicios(servicios:Servicio[]){
+       let YourHeaders = {'Content-Type':'application/json'};
+  		return this.http.post<Servicio[]>('http://localhost:8080v1/servicios',servicios);
   	}
 
   	

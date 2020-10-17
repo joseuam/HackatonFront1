@@ -22,31 +22,27 @@ export class PrincipalPage implements ViewWillEnter {
 
 
 
-  constructor( private principalServiceService:PrincipalServiceService, private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
+  constructor( private principalService:PrincipalServiceService, private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
     //ya establecidos
-    this.myPyme=new Pyme(100,"primero",[]);
-    var consumoAgua=new Servicio(null,0,0,0,"Agua.png");
-    var consumoLuz=new Servicio(null,0,0,0,"CLuz.jpg");
-    var consumoGas=new Servicio(null,0,0,0,"Cgas.jpg");
-    this.serviciosNuevos.push(consumoAgua);
-    this.serviciosNuevos.push(consumoAgua);
-    this.serviciosNuevos.push(consumoAgua);
+    this.myPyme=new Pyme(null,"Prueba 100",[]);
+    var consumoAgua = new Servicio(null,0,0,0,"Agua.png");
+    var consumoGas = new Servicio(null,0,0,0,"Gas.png");
+    var consumoLuz=new Servicio(null,0,0,0,"Luz.jpg");
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoGas);
+    this.myPyme.servicios.push(consumoLuz);
+
 
     //Pueden o no ser agregados
-    var consumoRefrig=new Servicio(null,0,0,0,"Electrodo.jpg");
-    var consumoEnfriamiento=new Servicio(null,0,0,0,"Electrodo.jpg");
-    var consumoAireAcon=new Servicio(null,0,0,0,"Electrodo.jpg");
-    var consumoCalefa=new Servicio(null,0,0,0,"Electrodo.jpg");
-    var consumoAuto=new Servicio(null,0,0,0,"CAuto.png");
-    this.tipo1.push(consumoAgua);
-    this.tipo1.push(consumoAgua);
-    this.tipo1.push(consumoGas);
+    var consumoRefrig = new Servicio(null,0,0,0,"Refrigeracion.png");
+    var consumoAireAcon = new Servicio(null,0,0,0,"Aire.png");
+    var consumoCalefa = new Servicio(null,0,0,0,"Calefaccion.png");
+    var consumoAuto = new Servicio(null,0,0,0,"Automovil.png");
     this.tipo1.push(consumoRefrig);
     this.tipo1.push(consumoAireAcon);
     this.tipo1.push(consumoCalefa);
     this.tipo1.push(consumoAuto);
 
-    //this.myPyme.servicios.push(consumoLuz); la luz es un cumulo de otros servicios
   }
 
   ionViewWillEnter() {
@@ -85,15 +81,29 @@ export class PrincipalPage implements ViewWillEnter {
     if(this.myPyme.servicios.length == 0) {
       alert("Debes agregar almenos un elemento.");
     }else{
-      // Se envia a la siguiente pagina la informacion
-      this.receiberJson.sendListSource(this.myPyme);
-      // y se redirecciona a ella
-      this.navCtrl.navigateForward(`/edicion-servicios`);
+
+      this.principalService.createServicios(this.myPyme.servicios)
+      .subscribe((data:Servicio[])=>{
+        this.myPyme.servicios=[];
+        this.myPyme.servicios=data;
+
+        this.principalService.createPyme(this.myPyme)
+        .subscribe((pyme:Pyme)=>{
+              console.log("my Pyme",this.myPyme);
+              this.myPyme.idPyme=pyme.idPyme;
+              // Se envia a la siguiente pagina la informacion
+              this.receiberJson.sendListSource(this.myPyme);
+              // y se redirecciona a ella
+              this.navCtrl.navigateForward(`/edicion-servicios`);
+
+        });
+
+
+      });
+
     }
 
 
-    console.log("my Pyme",this.myPyme);
-    console.log("Agregar",this.tipo1);
   }
 
 
