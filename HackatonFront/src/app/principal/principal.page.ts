@@ -82,24 +82,28 @@ export class PrincipalPage implements ViewWillEnter {
       alert("Debes agregar almenos un elemento.");
     }else{
 
-      this.principalService.createServicios(this.myPyme.servicios)
+     /* this.principalService.createServicios(this.myPyme.servicios)
       .subscribe((data:Servicio[])=>{
         this.myPyme.servicios=[];
         this.myPyme.servicios=data;
 
+
         this.principalService.createPyme(this.myPyme)
         .subscribe((pyme:Pyme)=>{
+
               console.log("my Pyme",this.myPyme);
               this.myPyme.idPyme=pyme.idPyme;
+
+       */
               // Se envia a la siguiente pagina la informacion
               this.receiberJson.sendListSource(this.myPyme);
               // y se redirecciona a ella
               this.navCtrl.navigateForward(`/edicion-servicios`);
 
-        });
+       // });
 
 
-      });
+      //});
 
     }
 
