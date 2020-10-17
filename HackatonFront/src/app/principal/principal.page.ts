@@ -18,12 +18,12 @@ export class PrincipalPage implements OnInit {
   constructor() { 
     //ya establecidos
     this.myPyme=new Pyme(null,"primero",[]);
-    var consumoAgua=new Servicio(null,"consumo de agua",0,0,"Agua.png");
+    var consumoAgua=new Servicio(null,"",0,0,"Agua.png");
     var consumoLuz=new Servicio(null,"consumo de luz",0,0,"CLuz.jpg");
     var consumoGas=new Servicio(null,"consumo de gas",0,0,"Cgas.jpg");
     this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoLuz);
-    this.myPyme.servicios.push(consumoGas);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
 
 
     //Pueden o no ser agregados
@@ -32,10 +32,9 @@ export class PrincipalPage implements OnInit {
     var consumoAireAcon=new Servicio(null,"consumo de Aire Acondicionado",0,0,"Electrodo.jpg");
     var consumoCalefa=new Servicio(null,"consumo Calefaccion",0,0,"Electrodo.jpg");
     var consumoAuto=new Servicio(null,"consumo transporte",0,0,"CAuto.png");
-    this.tipo1.push(consumoRefrig);
-    this.tipo1.push(consumoEnfriamiento);
-    this.tipo1.push(consumoAireAcon);
-    this.tipo1.push(consumoCalefa);
+    this.tipo1.push(consumoAgua);
+    this.tipo1.push(consumoAgua);
+    this.tipo1.push(consumoAgua);
 
 
   }
