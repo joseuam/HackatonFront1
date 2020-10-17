@@ -25,19 +25,19 @@ export class PrincipalPage implements ViewWillEnter {
   constructor( private principalService:PrincipalServiceService, private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
     //ya establecidos
     this.myPyme=new Pyme(null,"Prueba 100",[]);
-    var consumoAgua = new Servicio(null,0,0,0,"Agua.png");
-    var consumoGas = new Servicio(null,0,0,0,"Gas.png");
-    var consumoLuz=new Servicio(null,0,0,0,"Luz.jpg");
+    var consumoAgua = new Servicio(null,0,0,0,"Agua.png","h");
+    var consumoGas = new Servicio(null,0,0,0,"Gas.png","h");
+    var consumoLuz=new Servicio(null,0,0,0,"Luz.jpg","h");
     this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoGas);
     this.myPyme.servicios.push(consumoLuz);
 
 
     //Pueden o no ser agregados
-    var consumoRefrig = new Servicio(null,0,0,0,"Refrigeracion.png");
-    var consumoAireAcon = new Servicio(null,0,0,0,"Aire.png");
-    var consumoCalefa = new Servicio(null,0,0,0,"Calefaccion.png");
-    var consumoAuto = new Servicio(null,0,0,0,"Automovil.png");
+    var consumoRefrig = new Servicio(null,0,0,0,"Refrigeracion.png","h");
+    var consumoAireAcon = new Servicio(null,0,0,0,"Aire.png","h");
+    var consumoCalefa = new Servicio(null,0,0,0,"Calefaccion.png","h");
+    var consumoAuto = new Servicio(null,0,0,0,"Automovil.png","h");
     this.tipo1.push(consumoRefrig);
     this.tipo1.push(consumoAireAcon);
     this.tipo1.push(consumoCalefa);
@@ -82,6 +82,7 @@ export class PrincipalPage implements ViewWillEnter {
       alert("Debes agregar almenos un elemento.");
     }else{
 
+      console.log("voy a enviar",this.myPyme);
      this.principalService.createServicios(this.myPyme.servicios)
       .subscribe((data:Servicio[])=>{
         this.myPyme.servicios=[];

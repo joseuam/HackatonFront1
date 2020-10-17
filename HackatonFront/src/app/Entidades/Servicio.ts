@@ -5,7 +5,8 @@ export class Servicio{
 		public tipo:number,
 		public consumo:number,
 		public costo: number,
-		public NombreImagen: string
+		public nombreImagen: string,
+		private descripcion:string
 
 	){}
 }
