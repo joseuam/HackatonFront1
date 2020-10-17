@@ -26,9 +26,10 @@
                 
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-              
-                <div style="border: 1px solid #2dd36f;" *ngFor="let item of myPyme.servicios" (click)="llena(item.tipo)" align="center">
-                    <img src="assets/Imagenes/Servicios/{{item.NombreIma}}">  
+
+                <div class="example-box" *ngFor="let item of myPyme.servicios" (dblclick)="llena(item.tipo)" align="center" style="border: 1px solid #2dd36f;">
+                    <img src="assets/Imagenes/{{item.NombreImagen}}">
+                    
                 </div>
               
               </div>

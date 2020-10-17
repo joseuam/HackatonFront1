@@ -15,11 +15,24 @@ export class EdicionServiciosPage implements OnInit {
 	myPyme;
   datosServicios = [];
 
-  constructor(
-    private alertCtrl: AlertController,
+  constructor(    private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private receiberJson: ReceiverJsonServiceService
-    ) {}
+    private receiberJson: ReceiverJsonServiceService) { 
+
+  	this.myPyme=new Pyme(null,"mypyme",[]);
+    var consumoAgua=new Servicio(null,0,0,0,"Agua.png");
+    var consumoLuz=new Servicio(null,0,0,0,"CLuz.jpg");
+    var consumoGas=new Servicio(null,0,0,0,"Cgas.jpg");
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+    this.myPyme.servicios.push(consumoAgua);
+
+  }
+
 
   ngOnInit() {
     console.log("Recibi:");
