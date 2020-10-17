@@ -20,14 +20,14 @@
       <ion-row>
         <ion-col>
 
-            <h2>Presiona dos veces cada elemento para agregar información</h2>
+            <h2>Presiona un elemento para agregar información</h2>
             <div class="example-container vertical-scroll-contenedor">
               <div
                 
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
               
-                <div style="border: 1px solid #2dd36f;" *ngFor="let item of myPyme.servicios" (dblclick)="llena(item.tipo)" align="center">
+                <div style="border: 1px solid #2dd36f;" *ngFor="let item of myPyme.servicios" (click)="llena(item.tipo)" align="center">
                     <img src="assets/Imagenes/Servicios/{{item.NombreIma}}">  
                 </div>
               
@@ -42,7 +42,7 @@
 
     <div class="contenedorBotonIniciar">
       <ion-button color="success" (click)="terminar()">
-          <ion-label>Terminar</ion-label>
+          <ion-label>Calcular HdC</ion-label>
           <ion-icon
             name="finger-print"
             slot="end"

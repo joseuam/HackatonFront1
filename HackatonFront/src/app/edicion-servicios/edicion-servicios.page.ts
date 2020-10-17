@@ -88,8 +88,13 @@ export class EdicionServiciosPage implements OnInit {
   }
 
   terminar(){
-    // Datos Finales!
-    console.log(this.datosServicios);
-    this.navCtrl.navigateForward('/inicio');
+    if(this.datosServicios.length == 0){
+      alert("Debes completar todos los campos");
+    }else{
+      alert("Calculando...");
+      // Datos Finales!
+      console.log(this.datosServicios);
+      this.navCtrl.navigateForward('/inicio');
+    }
   }
 }
