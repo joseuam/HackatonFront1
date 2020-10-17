@@ -8,20 +8,20 @@
       ></ion-back-button>
     </ion-buttons>
   
-    <ion-title>Calculadora de HdC</ion-title>
+    <ion-title>Selección de Servicios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 <div cdkDropListGroup class="fondo1 fondoImagen" align="center">
-
+    <h2>Arrasta los elementos</h2>
     <ion-grid>
       <ion-row>
 
         <ion-col>
 
-          <h2>servicios</h2>
+          <h3>Servicios</h3>
             <div class="example-container vertical-scroll-contenedor">
               
               <div
@@ -30,8 +30,7 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of tipo1" cdkDrag>
-                  <img src="assets/Imagenes/{{item.NombreIma}}">
-                    {{item.tipo}}
+                  <img src="assets/Imagenes/Servicios/{{item.NombreIma}}">
                 </div>
               </div>
             </div>
@@ -41,7 +40,7 @@
 
         <ion-col>
 
-             <h2>Tus Servicios Agregados</h2>
+             <h3>Tus Servicios</h3>
             <div class="example-container vertical-scroll-contenedor">
               <div
                 cdkDropList
@@ -49,15 +48,14 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of myPyme.servicios" cdkDrag>
-                    <img src="assets/Imagenes/{{item.NombreIma}}" class="rounded float-left">
-                    <h5>{{item.tipo}}</h5>
+                    <img src="assets/Imagenes/Servicios/{{item.NombreIma}}" class="rounded float-left">
                 </div>
               </div>
             </div>
         </ion-col>
       </ion-row>
       <div class="contenedorBotonIniciar">
-      <ion-button color="success" href="edicion-servicios">
+      <ion-button color="success" (click)="siguiente()">
           <ion-label>Continuar</ion-label>
           <ion-icon
             name="finger-print"

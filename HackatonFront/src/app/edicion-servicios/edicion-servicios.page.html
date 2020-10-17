@@ -8,7 +8,7 @@
       ></ion-back-button>
     </ion-buttons>
   
-    <ion-title>Datos de Seleccionados</ion-title>
+    <ion-title>Información de Servicios</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
 <div class="fondo1 fondoImagen">
 <div cdkDropListGroup align="center">
 
-    <ion-grid>
+    <ion-grid >
       <ion-row>
         <ion-col>
 
@@ -27,9 +27,8 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
               
-                <div class="example-box" *ngFor="let item of myPyme.servicios" (dblclick)="llena()">
-                    <img src="assets/Imagenes/{{item.NombreIma}}" class="rounded float-left">
-                    <h5>{{item.tipo}}</h5>
+                <div style="border: 1px solid #2dd36f;" *ngFor="let item of myPyme.servicios" (dblclick)="llena(item.tipo)" align="center">
+                    <img src="assets/Imagenes/Servicios/{{item.NombreIma}}">  
                 </div>
               
               </div>
@@ -41,6 +40,16 @@
 
     </ion-grid>
 
+    <div class="contenedorBotonIniciar">
+      <ion-button color="success" (click)="terminar()">
+          <ion-label>Terminar</ion-label>
+          <ion-icon
+            name="finger-print"
+            slot="end"
+            size="large"
+          ></ion-icon>
+      </ion-button>
+    </div>
 </div>
 </div>
 

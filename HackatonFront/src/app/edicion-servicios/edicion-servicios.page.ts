@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import{Pyme} from '../Entidades/Pyme';
 import {Servicio} from '../Entidades/Servicio';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { ReceiverJsonServiceService } from '../receiver-json-service.service';
 
 @Component({
   selector: 'app-edicion-servicios',
@@ -10,88 +12,42 @@ import { AlertController } from '@ionic/angular';
 })
 export class EdicionServiciosPage implements OnInit {
 
-	myPyme:Pyme;
+	myPyme: Pyme;
+  datosServicios = [];
 
-  constructor(private alertCtrl: AlertController) { 
-
-  	this.myPyme=new Pyme(null,"primero",[]);
-    var consumoAgua=new Servicio(null,"a",0,0,"Agua.png");
-    var consumoLuz=new Servicio(null,"consumo de luz",0,0,"CLuz.jpg");
-    var consumoGas=new Servicio(null,"consumo de gas",0,0,"Cgas.jpg");
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-    this.myPyme.servicios.push(consumoAgua);
-
-  }
+  constructor(
+    private alertCtrl: AlertController,
+    private navCtrl: NavController,
+    private receiberJson: ReceiverJsonServiceService
+    ) {}
 
   ngOnInit() {
+    console.log("Recibi:");
+    // Se reciben los datos de la seleccion de los servicios
+    this.receiberJson.$getListSource.subscribe(list => {
+      console.log(list);
+      this.myPyme = list;
+    }).unsubscribe();
   }
 
-  async llena() {
+  // alert de cada servicio
+  async llena(tipo) {
+    console.log(tipo);
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Prompt!',
+      header: tipo+': Llena los campos',
       inputs: [
         {
-          name: 'name1',
-          type: 'text',
-          placeholder: 'Placeholder 1'
-        },
-        {
-          name: 'name2',
-          type: 'text',
-          id: 'name2-id',
-          value: 'hello',
-          placeholder: 'Placeholder 2'
-        },
-        // multiline input.
-        {
-          name: 'paragraph',
-          id: 'paragraph',
-          type: 'textarea',
-          placeholder: 'Placeholder 3'
-        },
-        {
-          name: 'name3',
-          value: 'http://ionicframework.com',
-          type: 'url',
-          placeholder: 'Favorite site ever'
-        },
-        // input date with min & max
-        {
-          name: 'name4',
-          type: 'date',
-          min: '2017-03-01',
-          max: '2018-01-12'
-        },
-        // input date without min nor max
-        {
-          name: 'name5',
-          type: 'date'
-        },
-        {
-          name: 'name6',
+          name: 'Consumo',
           type: 'number',
-          min: -5,
-          max: 10
+          placeholder: 'Cantidad Consumo'
         },
         {
-          name: 'name7',
-          type: 'number'
-        },
-        {
-          name: 'name8',
-          type: 'password',
-          placeholder: 'Advanced Attributes',
-          cssClass: 'specialClass',
-          attributes: {
-            maxlength: 4,
-            inputmode: 'decimal'
-          }
+          name: 'Costo',
+          type: 'number',
+          //id: 'name2-id',
+          //value: '12',
+          placeholder: 'Costo'
         }
       ],
       buttons: [
@@ -104,8 +60,10 @@ export class EdicionServiciosPage implements OnInit {
           }
         }, {
           text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: (datos) => {
+            // Se agregan los datos leidos
+            this.insertaDatos(tipo, datos);
+            //console.log(datos);
           }
         }
       ]
@@ -114,4 +72,24 @@ export class EdicionServiciosPage implements OnInit {
     await alert.present();
 }
 
+  // Verifica si hay que insertar los datos o actualizarlos
+  insertaDatos(tipo, datos){
+    let i = 0;
+    console.log("Datos:")
+    for (let entry of this.datosServicios) {
+      if(entry.tipo === tipo){
+        this.datosServicios[i] = {tipo, datos}; // Se sustituye el dato
+        return; 
+      }
+      i++;
+    }  
+    // Se inserta por primera vez el dato
+    this.datosServicios.push({tipo, datos});
+  }
+
+  terminar(){
+    // Datos Finales!
+    console.log(this.datosServicios);
+    this.navCtrl.navigateForward('/inicio');
+  }
 }
