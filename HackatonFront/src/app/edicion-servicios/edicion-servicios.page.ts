@@ -14,10 +14,10 @@ export class EdicionServiciosPage implements OnInit {
 
   constructor(private alertCtrl: AlertController) { 
 
-  	this.myPyme=new Pyme(null,"primero",[]);
-    var consumoAgua=new Servicio(null,"a",0,0,"Agua.png");
-    var consumoLuz=new Servicio(null,"consumo de luz",0,0,"CLuz.jpg");
-    var consumoGas=new Servicio(null,"consumo de gas",0,0,"Cgas.jpg");
+  	this.myPyme=new Pyme(null,"mypyme",[]);
+    var consumoAgua=new Servicio(null,0,0,0,"Agua.png");
+    var consumoLuz=new Servicio(null,0,0,0,"CLuz.jpg");
+    var consumoGas=new Servicio(null,0,0,0,"Cgas.jpg");
     this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoAgua);

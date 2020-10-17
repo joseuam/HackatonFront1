@@ -2,10 +2,10 @@ export class Servicio{
 
 	constructor(
 		public idServicio:number,
-		public tipo:string,
+		public tipo:number,
 		public consumo:number,
 		public costo: number,
-		public NombreIma: string
+		public NombreImagen: string
 
 	){}
 }
