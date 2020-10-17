@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{Pyme} from '../Entidades/Pyme';
+import { Pyme } from '../Entidades/Pyme';
 import {Servicio} from '../Entidades/Servicio';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
@@ -12,7 +12,7 @@ import { ReceiverJsonServiceService } from '../receiver-json-service.service';
 })
 export class EdicionServiciosPage implements OnInit {
 
-	myPyme: Pyme;
+	myPyme;
   datosServicios = [];
 
   constructor(

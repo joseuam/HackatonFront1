@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import{Pyme} from '../Entidades/Pyme';
+import { Pyme } from '../Entidades/Pyme';
 import {Servicio} from '../Entidades/Servicio';
 import { NavController } from '@ionic/angular';
 import { ReceiverJsonServiceService } from '../receiver-json-service.service';
@@ -13,6 +13,7 @@ import { ReceiverJsonServiceService } from '../receiver-json-service.service';
 export class PrincipalPage implements OnInit {
 
   myPyme:Pyme;
+  //myPyme:any[];
   tipo1:Servicio[]=[];  //mas general... empesas... pequeñas
   tipo2:Servicio[]=[]; //mas para personas....
 
