@@ -25,19 +25,19 @@ export class PrincipalPage implements ViewWillEnter {
   constructor( private principalService:PrincipalServiceService, private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
     //ya establecidos
     this.myPyme=new Pyme(null,"Prueba 100",[]);
-    var consumoAgua = new Servicio(null,0,0,0,"Agua.png","h");
-    var consumoGas = new Servicio(null,0,0,0,"Gas.png","h");
-    var consumoLuz=new Servicio(null,0,0,0,"Luz.jpg","h");
+    var consumoAgua = new Servicio(null,1,0,0,"Agua.png","h");
+    var consumoGas = new Servicio(null,2,0,0,"Gas.png","h");
+    var consumoLuz=new Servicio(null,3,0,0,"Luz.jpg","h");
     this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoGas);
     this.myPyme.servicios.push(consumoLuz);
 
 
     //Pueden o no ser agregados
-    var consumoRefrig = new Servicio(null,0,0,0,"Refrigeracion.png","h");
-    var consumoAireAcon = new Servicio(null,0,0,0,"Aire.png","h");
-    var consumoCalefa = new Servicio(null,0,0,0,"Calefaccion.png","h");
-    var consumoAuto = new Servicio(null,0,0,0,"Automovil.png","h");
+    var consumoRefrig = new Servicio(null,4,0,0,"Refrigeracion.png","h");
+    var consumoAireAcon = new Servicio(null,5,0,0,"Aire.png","h");
+    var consumoCalefa = new Servicio(null,6,0,0,"Calefaccion.png","h");
+    var consumoAuto = new Servicio(null,7,0,0,"Automovil.png","h");
     this.tipo1.push(consumoRefrig);
     this.tipo1.push(consumoAireAcon);
     this.tipo1.push(consumoCalefa);
@@ -81,7 +81,7 @@ export class PrincipalPage implements ViewWillEnter {
     if(this.myPyme.servicios.length == 0) {
       alert("Debes agregar almenos un elemento.");
     }else{
-
+/*
       console.log("voy a enviar",this.myPyme);
      this.principalService.createServicios(this.myPyme.servicios)
       .subscribe((data:Servicio[])=>{
@@ -94,17 +94,17 @@ export class PrincipalPage implements ViewWillEnter {
 
               console.log("my Pyme",this.myPyme);
               this.myPyme.idPyme=pyme.idPyme;
-
+*/
        
               // Se envia a la siguiente pagina la informacion
               this.receiberJson.sendListSource(this.myPyme);
               // y se redirecciona a ella
               this.navCtrl.navigateForward(`/edicion-servicios`);
 
-        });
+        //});
 
 
-      });
+      //});
 
     }
 

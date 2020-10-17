@@ -31,11 +31,11 @@ export class EdicionServiciosPage implements OnInit {
   }
 
   // alert de cada servicio
-  async llena(tipo) {
-    console.log(tipo);
+  async llena(servicio) {
+    //console.log(servicio);
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: tipo+': Llena los campos',
+      header: servicio.tipo+': Llena los campos',
       inputs: [
         {
           name: 'Consumo',
@@ -62,8 +62,9 @@ export class EdicionServiciosPage implements OnInit {
           text: 'Ok',
           handler: (datos) => {
             // Se agregan los datos leidos
-            this.insertaDatos(tipo, datos);
-            //console.log(datos);
+            servicio.consumo = datos.Consumo;
+            servicio.costo = datos.Costo;
+            console.log(servicio);
           }
         }
       ]
@@ -72,29 +73,11 @@ export class EdicionServiciosPage implements OnInit {
     await alert.present();
 }
 
-  // Verifica si hay que insertar los datos o actualizarlos
-  insertaDatos(tipo, datos){
-    let i = 0;
-    console.log("Datos:")
-    for (let entry of this.datosServicios) {
-      if(entry.tipo === tipo){
-        this.datosServicios[i] = {tipo, datos}; // Se sustituye el dato
-        return; 
-      }
-      i++;
-    }  
-    // Se inserta por primera vez el dato
-    this.datosServicios.push({tipo, datos});
-  }
-
   terminar(){
-    if(this.datosServicios.length == 0){
-      alert("Debes completar todos los campos");
-    }else{
-      alert("Calculando...");
-      // Datos Finales!
-      console.log(this.datosServicios);
-      this.navCtrl.navigateForward('/inicio');
-    }
+    // VALIDAR LOS DATOS
+    // Datos Finales!
+    console.log(this.myPyme);
+    this.navCtrl.navigateForward('/inicio');
+  
   }
 }
