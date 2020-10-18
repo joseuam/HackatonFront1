@@ -25,23 +25,28 @@ export class PrincipalPage implements ViewWillEnter {
   constructor(private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
     //ya establecidos
     this.myPyme=new Pyme(null,"Pymes de Prueba",0,0,[]);
-    var consumoAgua = new Servicio(null,1,0,0,"Agua.png","h");
+    //var consumoAgua = new Servicio(null,8,0,0,"Agua.png","h");
     var consumoGas = new Servicio(null,2,0,0,"Gas.png","h");
-    var consumoLuz=new Servicio(null,3,0,0,"Luz.jpg","h");
-    this.myPyme.servicios.push(consumoAgua);
+    var consumoLuz=new Servicio(null,1,0,0,"Luz.jpg","h");
+    //this.myPyme.servicios.push(consumoAgua);
     this.myPyme.servicios.push(consumoGas);
     this.myPyme.servicios.push(consumoLuz);
 
+    //enfriamiento
+
 
     //Pueden o no ser agregados
-    var consumoRefrig = new Servicio(null,4,0,0,"Refrigeracion.png","h");
-    var consumoAireAcon = new Servicio(null,5,0,0,"Aire.png","h");
+    var enfriamiento = new Servicio(null,4,0,0,"enfriamiento.jpg","D");
+    var consumoRefrig = new Servicio(null,3,0,0,"Refrigeracion.png","h");
+    var consumoAireAcon = new Servicio(null,5,0,0,"Aire.png","h");//enfriamiento
     var consumoCalefa = new Servicio(null,6,0,0,"Calefaccion.png","h");
     var consumoAuto = new Servicio(null,7,0,0,"Automovil.png","h");
     this.tipo1.push(consumoRefrig);
     this.tipo1.push(consumoAireAcon);
     this.tipo1.push(consumoCalefa);
     this.tipo1.push(consumoAuto);
+    this.tipo1.push(enfriamiento);
+
 
   }
 
