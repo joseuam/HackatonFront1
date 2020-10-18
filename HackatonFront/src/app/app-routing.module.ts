@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'edicion-servicios',
     loadChildren: () => import('./edicion-servicios/edicion-servicios.module').then( m => m.EdicionServiciosPageModule)
   },
+  {
+    path: 'inicio/mishuellas',
+    loadChildren: () => import('./MyHuella/mishuellas/mishuellas.module').then( m => m.MishuellasPageModule)
+  },
+  {
+    path: 'huella/:id',
+    loadChildren: () => import('./MyHuella/huella/huella.module').then( m => m.HuellaPageModule)
+  },
 
 
 ];

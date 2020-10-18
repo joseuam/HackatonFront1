@@ -28,5 +28,17 @@ export class PrincipalServiceService {
   		return this.http.post<Servicio[]>('http://localhost:8080/v1/servicios',servicios,httpOptions);
   	}
 
+    obtenerPymes(){
+      return this.http.get<Pyme[]>('http://localhost:8080/v1/pymes');
+    }
+
+    obtenerPyme(idPyme:number){
+      return this.http.get<Pyme>('http://localhost:8080/v1/pymes/'+idPyme);
+    }
+
+    ObtenerHuellaSoluciones(mypyme:Pyme){
+      return this.http.post<Pyme[]>('http://localhost:8080/v1/algoritmo',mypyme);
+    }
+
   	
 }

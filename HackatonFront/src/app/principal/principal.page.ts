@@ -4,7 +4,7 @@ import { Pyme } from '../Entidades/Pyme';
 import {Servicio} from '../Entidades/Servicio';
 import { ViewWillEnter, NavController } from '@ionic/angular';
 import { ReceiverJsonServiceService } from '../receiver-json-service.service';
-import {PrincipalServiceService} from '../Servicios/principal-service.service';
+
 
 
 @Component({
@@ -22,9 +22,9 @@ export class PrincipalPage implements ViewWillEnter {
 
 
 
-  constructor( private principalService:PrincipalServiceService, private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
+  constructor(private navCtrl: NavController, private receiberJson: ReceiverJsonServiceService) { 
     //ya establecidos
-    this.myPyme=new Pyme(null,"Prueba 100",[]);
+    this.myPyme=new Pyme(null,"Pymes de Prueba",0,0,[]);
     var consumoAgua = new Servicio(null,1,0,0,"Agua.png","h");
     var consumoGas = new Servicio(null,2,0,0,"Gas.png","h");
     var consumoLuz=new Servicio(null,3,0,0,"Luz.jpg","h");
@@ -81,30 +81,11 @@ export class PrincipalPage implements ViewWillEnter {
     if(this.myPyme.servicios.length == 0) {
       alert("Debes agregar almenos un elemento.");
     }else{
-/*
-      console.log("voy a enviar",this.myPyme);
-     this.principalService.createServicios(this.myPyme.servicios)
-      .subscribe((data:Servicio[])=>{
-        this.myPyme.servicios=[];
-        this.myPyme.servicios=data;
-
-
-        this.principalService.createPyme(this.myPyme)
-        .subscribe((pyme:Pyme)=>{
-
-              console.log("my Pyme",this.myPyme);
-              this.myPyme.idPyme=pyme.idPyme;
-*/
        
-              // Se envia a la siguiente pagina la informacion
-              this.receiberJson.sendListSource(this.myPyme);
-              // y se redirecciona a ella
-              this.navCtrl.navigateForward(`/edicion-servicios`);
-
-        //});
-
-
-      //});
+      // Se envia a la siguiente pagina la informacion
+      this.receiberJson.sendListSource(this.myPyme);
+      // y se redirecciona a ella
+      this.navCtrl.navigateForward(`/edicion-servicios`);
 
     }
 

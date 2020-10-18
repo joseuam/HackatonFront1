@@ -4,6 +4,7 @@ import {Servicio} from '../Entidades/Servicio';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { ReceiverJsonServiceService } from '../receiver-json-service.service';
+import {PrincipalServiceService} from '../Servicios/principal-service.service';
 
 @Component({
   selector: 'app-edicion-servicios',
@@ -12,12 +13,13 @@ import { ReceiverJsonServiceService } from '../receiver-json-service.service';
 })
 export class EdicionServiciosPage implements OnInit {
 
-	myPyme;
+	myPyme:Pyme;
   datosServicios = [];
 
   constructor(    private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private receiberJson: ReceiverJsonServiceService) { 
+    private receiberJson: ReceiverJsonServiceService,
+    private principalService:PrincipalServiceService) { 
   }
 
 
@@ -76,8 +78,23 @@ export class EdicionServiciosPage implements OnInit {
   terminar(){
     // VALIDAR LOS DATOS
     // Datos Finales!
-    console.log(this.myPyme);
-    this.navCtrl.navigateForward('/inicio');
+   
+    console.log("voy a enviar",this.myPyme);
+     this.principalService.createServicios(this.myPyme.servicios)
+      .subscribe((data:Servicio[])=>{
+        this.myPyme.servicios=[];
+        this.myPyme.servicios=data;
+
+        this.principalService.createPyme(this.myPyme)
+        .subscribe((pyme:Pyme)=>{
+          this.navCtrl.navigateForward('/inicio/mishuellas');
+
+        });
+
+
+      });
+
+    
   
   }
 }

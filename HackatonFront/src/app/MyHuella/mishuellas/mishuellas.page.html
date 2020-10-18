@@ -1,0 +1,38 @@
+
+<ion-header>
+  <ion-toolbar color="success">
+  	<ion-buttons slot="start">
+      <ion-back-button
+        style="padding-left: .4em"
+        text=""
+        defaultHref="/inicio"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis huellas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<div class="fondo1 fondoImagen">
+		<div cdkDropListGroup class="fondo1 fondoImagen" align="center">
+
+			<table class="mat-elevation-z8 table table-hover">
+			  <thead class="thead-light">
+			    <tr>
+			      <th *ngFor="let disp of displayedColumns"  scope="col">{{disp}}</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr *ngFor="let pyme of misPymes" >
+			      <th scope="row">{{pyme.idPyme}}</th>
+			      <td>{{pyme.nombre}}</td>
+			      <td><button class="btn btn-primary" (click)="ir(pyme)">Ir</button></td>
+			    </tr>
+			  </tbody>
+			</table>
+
+		</div>
+	</div>
+
+</ion-content>
