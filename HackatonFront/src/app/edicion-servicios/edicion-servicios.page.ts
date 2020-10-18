@@ -15,7 +15,7 @@ export class EdicionServiciosPage implements OnInit {
 
 	myPyme:Pyme;
   datosServicios = [];
-
+  alias = "";
   constructor(    private alertCtrl: AlertController,
     private navCtrl: NavController,
     private receiberJson: ReceiverJsonServiceService,
@@ -97,13 +97,14 @@ export class EdicionServiciosPage implements OnInit {
   terminar(){
     // VALIDAR LOS DATOS
     // Datos Finales!
-   
+     console.log("ALIAS:" + this.alias);
+
     console.log("voy a enviar",this.myPyme);
      this.principalService.createServicios(this.myPyme.servicios)
       .subscribe((data:Servicio[])=>{
         this.myPyme.servicios=[];
         this.myPyme.servicios=data;
-
+        this.myPyme.nombre = this.alias;
         this.principalService.createPyme(this.myPyme)
         .subscribe((pyme:Pyme)=>{
           this.navCtrl.navigateForward('/inicio/mishuellas');
