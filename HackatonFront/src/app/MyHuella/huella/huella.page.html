@@ -14,10 +14,37 @@
 <ion-content>	
   <div class="fondo1 fondoImagen">
 
-    <div *ngFor="let item of soluciones; index as i">
-			<!--<h1>{{myPyme.nombre}}</h1><br><br>-->
-			<h2>Alternativa {{ i+1 }}: {{item.huella}} Ton CO2/mes</h2>  
-		</div>
+    
+      <h2>Actual..</h2>
+      <div *ngIf="solucionActual">
+        <div *ngFor="let SolA of solucionActual.servicios; index as i">
+
+          <ion-row>
+            <ion-col>
+              <img src="assets/Imagenes/Servicios/{{SolA.nombreImagen}}" />
+            </ion-col>
+
+            <ion-col>
+              <h3>$ {{SolA.costo}}</h3><br>
+              <h3>consumo: {{SolA.consumo}}</h3>
+            </ion-col>
+          </ion-row>
+
+        </div>
+
+        <h2>Huella: {{solucionActual.huella}}      Costo Total: {{solucionActual.costo}}</h2>
+      </div>
+
+      <br><br><br><br>
+
+      <h2>Soluciones</h2>
+      <div *ngFor="let pymeSol of pymesSoluciones; index as i">
+
+        {{ i+1 }}: <button class="btn btn-dark" (click)="sol(pymeSol.servicios)">-></button>
+        <h2>Huella: {{pymeSol.huella}}      Costo Total: {{pymeSol.costo}}</h2>
+
+  		</div>
+
 	</div>
 
 </ion-content>
