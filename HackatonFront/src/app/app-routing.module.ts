@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'huella/:id',
     loadChildren: () => import('./MyHuella/huella/huella.module').then( m => m.HuellaPageModule)
+  },  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal/modal.module').then( m => m.ModalPageModule)
   },
+
 
 
 ];

@@ -5,7 +5,8 @@ import {PrincipalServiceService} from '../../Servicios/principal-service.service
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
-
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../../modal/modal/modal.page';
 
 @Component({
   selector: 'app-huella',
@@ -19,8 +20,14 @@ export class HuellaPage implements OnInit {
   CalculoHuella: number=0;
   pymesSoluciones:Pyme[]=[];  //la primera es original
   solucionActual:Pyme;
-
-  constructor(private route: ActivatedRoute,private principalService:PrincipalServiceService, private navCtrl: NavController,private alertCtrl: AlertController) { }
+  nombreActual = "xD";
+  constructor(
+    private route: ActivatedRoute,
+    private principalService:PrincipalServiceService,
+    private navCtrl: NavController,
+    private alertCtrl: AlertController,
+    public modalController: ModalController
+    ) { }
 
   ngOnInit() {
   	this.route.params.subscribe(params => {
@@ -34,6 +41,7 @@ export class HuellaPage implements OnInit {
           .subscribe((P:Pyme[])=>{
             this.solucionActual=P[0];
             console.log("Solucion Actual",this.solucionActual);
+            this.nombreActual = this.solucionActual.nombre;
              for (var i = 1; i < P.length; i++) {
                this.pymesSoluciones.push(P[i]);
              }
@@ -44,41 +52,12 @@ export class HuellaPage implements OnInit {
     });
   }
 
-
-  // alert de cada servicio
-  async sol(servicios) {
-    //console.log(servicio);
-    const alert = await this.alertCtrl.create({
-      cssClass: 'my-custom-class',
-      header: "Servicio de "+servicios.nombreServicio,
-      message : `<img src="assets/Imagenes/Servicios/Agua.png/>`,  
-      inputs: [
-      {
-        name: `<img src="assets/Imagenes/Servicios/Agua.png/>`,
-        placeholder: 'jeje'
-      }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler: (datos) => {
-            // Se agregan los datos leidos
-            
-            console.log(servicios);
-          }
-        }
-      ]
+ async presentModal(servicios, numSolucion) {
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      componentProps: {'servicios':servicios, 'numSolucion': numSolucion}
     });
-    await alert.present();
+    return await modal.present();
   }
-
-
 
 }

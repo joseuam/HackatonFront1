@@ -7,41 +7,26 @@
         defaultHref="/inicio/mishuellas"
       ></ion-back-button>
     </ion-buttons>
-    <ion-title>Co2</ion-title>
+    <ion-title>{{ nombreActual }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>	
-  <div class="fondo1 fondoImagen">
+  <div class="fondo1 fondoImagen" align="center">
 
     
-      <h2>Actual..</h2>
+      <h2>Información Actual</h2>
       <div *ngIf="solucionActual">
-        <div *ngFor="let SolA of solucionActual.servicios; index as i">
-
-          <ion-row>
-            <ion-col>
-              <img src="assets/Imagenes/Servicios/{{SolA.nombreImagen}}" />
-            </ion-col>
-
-            <ion-col>
-              <h3>$ {{SolA.costo}}</h3><br>
-              <h3>consumo: {{SolA.consumo}}</h3>
-            </ion-col>
-          </ion-row>
-
-        </div>
-
-        <h2>Huella: {{solucionActual.huella}}      Costo Total: {{solucionActual.costo}}</h2>
+        <h3>Huella: {{solucionActual.huella}}</h3>
+        <h3>Costo Total: {{solucionActual.costo}}</h3>
       </div>
-
-      <br><br><br><br>
 
       <h2>Soluciones</h2>
       <div *ngFor="let pymeSol of pymesSoluciones; index as i">
 
-        {{ i+1 }}: <button class="btn btn-dark" (click)="sol(pymeSol.servicios)">-></button>
-        <h2>Huella: {{pymeSol.huella}}      Costo Total: {{pymeSol.costo}}</h2>
+        <ion-button color="success" (click)="presentModal(pymeSol.servicios, i+1)">Solución {{ i+1 }}</ion-button>
+        <h3>Disminuye la Huella a {{pymeSol.huella}}</h3>
+        <h3>Disminuye el Costo Total a {{pymeSol.costo}}</h3>
 
   		</div>
 

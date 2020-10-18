@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Solución {{ numSolucion }}</ion-title>
+    <ion-buttons slot="end">
+	  <ion-button (click)="dismissModal()">Cerrar</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div *ngFor="let servicio of servicios; index as i">
+
+		<ion-row>
+			<ion-col>
+				<img src="assets/Imagenes/Servicios/{{servicio.nombreImagen}}" />
+			</ion-col>
+
+			<ion-col>
+				<h3>$ {{servicio.costo}}</h3><br>
+				<h3>consumo: {{servicio.consumo}}</h3>
+			</ion-col>
+		</ion-row>
+
+	</div>
+</ion-content>

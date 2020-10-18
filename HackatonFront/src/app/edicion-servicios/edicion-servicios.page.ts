@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { ReceiverJsonServiceService } from '../receiver-json-service.service';
 import {PrincipalServiceService} from '../Servicios/principal-service.service';
-
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-edicion-servicios',
   templateUrl: './edicion-servicios.page.html',
@@ -94,6 +94,10 @@ export class EdicionServiciosPage implements OnInit {
     await alert.present();
 }
 
+
+  drop(event: CdkDragDrop<Servicio[]>) {
+    
+  }
   terminar(){
     // VALIDAR LOS DATOS
     // Datos Finales!
