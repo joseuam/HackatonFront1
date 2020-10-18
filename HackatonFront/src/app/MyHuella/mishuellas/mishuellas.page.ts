@@ -27,4 +27,8 @@ export class MishuellasPage implements OnInit {
   	this.navCtrl.navigateForward('/huella/'+pyme.idPyme);
   }
 
+  regresaInicio(){
+    this.navCtrl.navigateForward('/inicio'); 
+  }
+
 }
