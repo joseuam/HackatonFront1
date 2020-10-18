@@ -28,7 +28,7 @@
                 (cdkDropListDropped)="drop($event)">
 
                 <div class="example-box" *ngFor="let item of myPyme.servicios" (click)="llena(item)" align="center" style="border: 1px solid #2dd36f;">
-                    <img src="assets/Imagenes/Servicios/{{item.nombreImagen}}" title="{{item.descripcion}}" />
+                    <img src="assets/Imagenes/Servicios/{{item.nombreImagen}}" />
                     
                 </div>
               
@@ -40,6 +40,12 @@
       </ion-row>
 
     </ion-grid>
+
+    <ion-item>
+      <ion-input
+        placeholder="Ingresa un alias"
+      ></ion-input>
+    </ion-item>
 
     <div class="contenedorBotonIniciar">
       <ion-button color="success" (click)="terminar()">

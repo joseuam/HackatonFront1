@@ -34,24 +34,39 @@ export class EdicionServiciosPage implements OnInit {
 
   // alert de cada servicio
   async llena(servicio) {
-    //console.log(servicio);
-    const alert = await this.alertCtrl.create({
-      cssClass: 'my-custom-class',
-      header: servicio.tipo+': Llena los campos',
-      inputs: [
+    let opciones = [];
+    let esUnitario;
+    if(servicio.unidadCosto==="-"){
+      esUnitario= true;
+      opciones = [
         {
           name: 'Consumo',
           type: 'number',
-          placeholder: 'Cantidad Consumo'
+          placeholder: servicio.unidadConsumo
+        }
+
+      ];
+    }else{
+      esUnitario= false;
+      opciones = [
+        {
+          name: 'Consumo',
+          type: 'number',
+          placeholder: servicio.unidadConsumo
         },
         {
           name: 'Costo',
           type: 'number',
-          //id: 'name2-id',
-          //value: '12',
-          placeholder: 'Costo'
+          placeholder: servicio.unidadCosto
         }
-      ],
+
+      ];
+    }
+    //console.log(servicio);
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: "Servicio de "+servicio.nombreServicio,
+      inputs: opciones,
       buttons: [
         {
           text: 'Cancel',
@@ -65,13 +80,17 @@ export class EdicionServiciosPage implements OnInit {
           handler: (datos) => {
             // Se agregan los datos leidos
             servicio.consumo = datos.Consumo;
-            servicio.costo = datos.Costo;
+            if(esUnitario){
+              servicio.costo = 0;
+            }else{
+              servicio.costo = datos.Costo;
+
+            }
             console.log(servicio);
           }
         }
       ]
     });
-
     await alert.present();
 }
 

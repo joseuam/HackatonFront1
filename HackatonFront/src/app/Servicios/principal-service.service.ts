@@ -15,29 +15,30 @@ const httpOptions = {
 export class PrincipalServiceService {
 
 
-	
+	  //path = "http://localhost:8080";
+    path1 = "https://miecopymeback.herokuapp.com";
   	constructor(private http: HttpClient) {}
 
   	createPyme(pyme:Pyme ){
-  		return this.http.post<Pyme>('http://localhost:8080/v1/pymes',pyme,httpOptions);
+  		return this.http.post<Pyme>(this.path1 + '/v1/pymes',pyme,httpOptions);
 
   	}
 
   	createServicios(servicios:Servicio[]){
      
-  		return this.http.post<Servicio[]>('http://localhost:8080/v1/servicios',servicios,httpOptions);
+  		return this.http.post<Servicio[]>(this.path1 + '/v1/servicios',servicios,httpOptions);
   	}
 
     obtenerPymes(){
-      return this.http.get<Pyme[]>('http://localhost:8080/v1/pymes');
+      return this.http.get<Pyme[]>(this.path1 + '/v1/pymes');
     }
 
     obtenerPyme(idPyme:number){
-      return this.http.get<Pyme>('http://localhost:8080/v1/pymes/'+idPyme);
+      return this.http.get<Pyme>(this.path1 + '/v1/pymes/'+idPyme);
     }
 
     ObtenerHuellaSoluciones(mypyme:Pyme){
-      return this.http.post<Pyme[]>('http://localhost:8080/v1/algoritmo',mypyme);
+      return this.http.post<Pyme[]>(this.path1 + '/v1/algoritmo',mypyme);
     }
 
   	
